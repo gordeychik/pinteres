@@ -1,16 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
-import { AuthProvider } from './api/authProvider';
+import { UploadPage } from './pages/UploadPage/UploadPage';
+import { AccountPage } from './pages/AccountPage/AccountPage';
+import { FavoritePage } from './pages/FavoritePage/FavoritePage';
 import './App.scss'
 
 function App() {
   return (
     <>
-      <AuthProvider>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-        </Routes>
-      </AuthProvider>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/upload' element={<UploadPage />} />
+        <Route path='/account' element={<AccountPage />} />
+        <Route path='/favorite' element={<FavoritePage />} />
+      </Routes>
     </>
   )
 }

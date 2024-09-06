@@ -1,0 +1,141 @@
+.title {
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #128a58;
+
+  h1 {
+    font-size: 30px;
+    line-height: 40px;
+    color: #128a58;
+  }
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.uploadContainer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    color: #0f7a4d;
+  }
+}
+
+.customFileInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  color: #0f7a4d;
+  border-radius: 40px;
+  width: 70%;
+  height: 300px;
+  border: 2px dashed #0f7a4d;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hiddenInput {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.previewContainer {
+  margin-top: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageGrid {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.previewImage {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.upload__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+  line-height: 30px;
+  color: #0f7a4d;
+  font-weight: 600;
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.uploadButton {
+  margin-top: 20px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: #1f1f1f;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    font-size: 24px;
+    line-height: 30px;
+    color: #0f7a4d;
+    margin-bottom: 30px;
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 22px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #128a58;
+  border: 2px solid #128a58;
+  cursor: pointer;
+  transition: 0.3s all;
+
+  &:hover {
+    color: #128a58;
+  }
+}

@@ -5,19 +5,24 @@ import { fetchTabs } from '../../api/getTabs';
 import { fetchImages } from '../../api/getItems';
 import Masonry from 'react-masonry-css';
 import clsx from 'clsx';
-import { Login } from '../../components/Login/Login';
-import { Registrate } from '../../components/Registrate/Registrate';
 import styles from './HomePage.module.scss';
+import { Heart } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { addToFavorite, removeFromFavorite } from '../../store/favoriteSlice';
 
 interface IProps {
     activeIndex?: number;
 }
 
 interface ImageData {
+    id: number;
     image: string;
 }
 
 export const HomePage: React.FC<IProps> = ({ activeIndex: initialActiveIndex = 0 }) => {
+    const dispatch = useDispatch();
+    const favorites = useSelector((state: RootState) => state.favorite.items);
 
     const [tabs, setTabs] = useState<string[]>([]);
     const [activeTab, setActiveTab] = useState<string>(tabs[initialActiveIndex] || '');
@@ -42,7 +47,6 @@ export const HomePage: React.FC<IProps> = ({ activeIndex: initialActiveIndex = 0
             try {
                 const imagesData = await fetchImages(activeTab);
                 setImages(imagesData);
-                console.log(imagesData);
             } catch (error) {
                 console.log(error);
             }
@@ -55,6 +59,14 @@ export const HomePage: React.FC<IProps> = ({ activeIndex: initialActiveIndex = 0
 
     const handleClick = (tab: string) => {
         setActiveTab(tab);
+    };
+
+    const handleLike = (image: ImageData) => {
+        if (favorites.some(item => item.id === image.id)) {
+            dispatch(removeFromFavorite(image.id));
+        } else {
+            dispatch(addToFavorite(image));
+        }
     };
 
     const breakpointColumnsObj = {
@@ -89,12 +101,13 @@ export const HomePage: React.FC<IProps> = ({ activeIndex: initialActiveIndex = 0
                         {images.map((image, index) => (
                             <div key={index} className={styles.photoItem}>
                                 <img src={image.image} alt={`${index}`} loading='lazy' />
+                                <button className={styles.like} onClick={() => handleLike(image)}>
+                                    <Heart stroke='red' fill={favorites.some(item => item.id === image.id) ? 'red' : 'transparent'} />
+                                </button>
                             </div>
                         ))}
                     </Masonry>
                 </div>
-                <Login />
-                <Registrate />
             </Container>
         </>
     );

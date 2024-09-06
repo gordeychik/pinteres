@@ -1,11 +1,13 @@
 .input {
     width: 100%;
     padding: 12px 30px;
-    border-radius: 50px;
+    border-radius: 10px;
     outline: none;
     border: none;
-    background-color: #d1d1d1;
+    background-color: transparent;
     color: #1f1f1f;
     font-size: 16px;
     line-height: 22px;
+    border-top: 1px solid #128a58;
+    border-bottom: 1px solid #128a58;
 }

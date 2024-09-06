@@ -1,0 +1,18 @@
+.wrapper {
+    margin-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    h1 {
+        font-size: 40px;
+        line-height: 50px;
+        color: #128a58;
+    }
+
+    svg {
+        width: 50px;
+        height: 50px;
+    }
+}
